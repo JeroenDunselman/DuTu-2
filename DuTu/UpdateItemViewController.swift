@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MapKit
 class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     let categories = ["Sports", "Events", "Movies & Music", "Others"]
@@ -15,6 +15,9 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
     public var isAdding: Bool = false
     
     var item: Item!
+    
+    @IBOutlet weak var mapView: MKMapView!
+    var location: DoTooLocation?
     @IBOutlet var itemEntryTextView: UITextView?
     @IBOutlet weak var privacyControl: UISegmentedControl!
     @IBOutlet weak var buttonSave: UIButton!
@@ -39,7 +42,10 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
                 item.name = itemEntryTextView?.text!
                 item.publicItem = self.privacyControl.selectedSegmentIndex == 0
                 item.category = categories[selectedCategory]
-
+                if let coordinate = self.location?.coordinate {
+                    item.latitude = coordinate.latitude
+                    item.longitude = coordinate.longitude
+                }
             }
             
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
@@ -55,20 +61,84 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
         itemEntryTextView?.delegate = self
         self.categoryPicker.dataSource = self
         self.categoryPicker.delegate = self
+        initMap()
     }
     
+    @objc func handleLongPress(_ gestureRecognizer : UIGestureRecognizer){
+        if gestureRecognizer.state != .began { return }
+        
+        let touchPoint = gestureRecognizer.location(in: mapView)
+        let touchMapCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
+        if let location = self.location {
+            mapView.removeAnnotation(location)
+        }
+        self.location = DoTooLocation(coordinate: touchMapCoordinate)
+        
+        mapView.addAnnotation(self.location!)
+        //, context: CFTreeContext)//Album(coordinate: touchMapCoordinate, context: sharedContext)
+//        print("\(String(describing: self.location?.coordinate))")
+        
+//        let x = MKPointAnnotation()
+//        x.coordinate = touchMapCoordinate
+//        mapView.addAnnotation(x)
+        
+    }
+    
+    // 4)
+    //        let annotation = MKPointAnnotation()
+    //        annotation.coordinate = location
+    //        annotation.title = "iOSDevCenter-Kirit Modi"
+    //        annotation.subtitle = "Ahmedabad"
+
+    func showLocation(ForItem: Item) {
+        
+        if let location = self.location {
+            mapView.removeAnnotation(location)
+        }
+        
+        // default(latitude: 51.9230,longitude: 4.4684)
+        let location = CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude)
+        self.location = DoTooLocation(coordinate: location)
+        //
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: location, span: span)
+        mapView.setRegion(region, animated: true)
+        mapView.addAnnotation(self.location!)
+    }
+    
+    func initMap() {
+        let longPressRecogniser = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))//MapViewController.
+        longPressRecogniser.minimumPressDuration = 1.0
+        mapView.addGestureRecognizer(longPressRecogniser)
+        
+        // 1)
+        mapView.mapType = MKMapType.standard
+
+    }
+    
+
     override func viewWillAppear(_ animated: Bool)    {
-        let title = isAdding ? "Add" : "Update"
         
         if let item = item {
             itemEntryTextView?.text = item.name
-            //            self.privacyControl.setTitle("Hatseflats", forSegmentAt: 0)
             self.privacyControl.selectedSegmentIndex = item.publicItem ? 0 : 1
             if let category = item.category {
                 self.categoryPicker.selectRow(categories.firstIndex(of: category)! , inComponent:0, animated:true)
             }
+
+            //            (latitude: 51.9230,longitude: 4.4684)
+//            let location = CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude)
+//            self.location = DoTooLocation(coordinate: location)
+            if isAdding {
+                item.longitude = 4.4684
+                item.latitude = 51.9230
+                
+            }
+            
+            showLocation(ForItem: item)
         }
         
+        let title = isAdding ? "Add" : "Update"
         buttonSave.setTitle(title, for: .normal)
         // Do any additional setup after loading the view.
     }

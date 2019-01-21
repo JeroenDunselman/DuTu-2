@@ -8,12 +8,12 @@
 
 import UIKit
 
-
 class DisplayTableViewController: UITableViewController, UISearchBarDelegate {
     var selectedIndex: Int!
     var model: DisplayViewModel?
     
     var updateItemVC: UpdateItemViewController?
+    var viewItemVC: ViewItemViewController?
     
     @IBAction func addItem(_ sender: Any) {
         
@@ -76,7 +76,7 @@ extension DisplayTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         
         cell.textLabel?.text = model?.data()[indexPath.row].name
-        
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
@@ -89,7 +89,12 @@ extension DisplayTableViewController {
         selectedIndex = indexPath.row
         
         //        performSegue(withIdentifier: "UpdateVC", sender: self)
+        showItemDetails()
         
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func updateItemDetails() {
         if self.updateItemVC == nil {
             self.updateItemVC = (storyboard!.instantiateViewController(withIdentifier: "EditDoTooVC") as! UpdateItemViewController)
         }
@@ -100,39 +105,66 @@ extension DisplayTableViewController {
             updateItemVC.navigationItem.leftBarButtonItem =
                 UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBack))
             updateItemVC.item = model!.data()[selectedIndex!]
-            let navController = UINavigationController(rootViewController: updateItemVC)
-            present(navController, animated: false, completion: nil)
+            
+            let navigationController = UINavigationController(rootViewController: updateItemVC)
+            present(navigationController, animated: false, completion: nil)
         }
-        tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+    func showItemDetails() {
+        if self.viewItemVC == nil {
+            self.viewItemVC = (storyboard!.instantiateViewController(withIdentifier: "viewItemVC") as! ViewItemViewController)
+        }
+        if let viewItemVC = self.viewItemVC {
+            //        let updateItemVC = storyboard!.instantiateViewController(withIdentifier: "EditDoTooVC") as! UpdateItemViewController
+//            viewItemVC.isAdding = false
+            viewItemVC.item = model!.data()[selectedIndex!]
+            
+            viewItemVC.navigationItem.title = viewItemVC.item.name //"Viewing Someone's DoToo"
+            viewItemVC.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBack))
+            viewItemVC.item = model!.data()[selectedIndex!]
+            
+            let navigationController = UINavigationController(rootViewController: viewItemVC)
+            present(navigationController, animated: false, completion: nil)
+        }
+    }
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        self.selectedIndex = indexPath.row
         
-        let delete = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
-            // delete item at indexPath
+        // no edit/delete action offered unless content filtered userowned items
+        if !(model?.contentModeAll)! {
             
-            let item = self.model?.data()[indexPath.row]
-            self.model!.context.delete(item!)
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            let delete = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+                // delete item at indexPath
+                self.model?.delete(forRow: indexPath.row)
+                tableView.reloadData()
+            }
+            delete.backgroundColor = UIColor(red: 0/255, green: 177/255, blue: 106/255, alpha: 1.0)
             
-            //            self.model?.data().remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
             
+            let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+                // share item at indexPath
+                
+                print("Edit")
+//                self.selectedIndex = indexPath.row
+                self.updateItemDetails()
+            }
+            edit.backgroundColor = UIColor(red: 54/255, green: 215/255, blue: 183/255, alpha: 1.0)
+            
+            return [delete, edit]
+            
+        } else {
+            
+            let show = UITableViewRowAction(style: .default, title: "Show") { (action, indexPath) in
+                // share item at indexPath
+                
+                print("Show")
+//                self.selectedIndex = indexPath.row
+                self.showItemDetails()
+            }
+            show.backgroundColor = UIColor(red: 54/255, green: 215/255, blue: 183/255, alpha: 1.0)
+            
+            return [show]
         }
-        
-        let share = UITableViewRowAction(style: .default, title: "Share") { (action, indexPath) in
-            // delete item at indexPath
-            
-            print("Share")
-            
-        }
-        
-        delete.backgroundColor = UIColor(red: 0/255, green: 177/255, blue: 106/255, alpha: 1.0)
-        share.backgroundColor = UIColor(red: 54/255, green: 215/255, blue: 183/255, alpha: 1.0)
-        
-        
-        return [delete,share]
-        
     }
     
     //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

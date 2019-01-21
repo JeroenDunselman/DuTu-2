@@ -12,8 +12,8 @@ import CoreData
 
 class DisplayViewModel {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var items: [Item] = []
-//    var selectedIndex: Int!
+    //    var items: [Item] = []
+    //    var selectedIndex: Int!
     var filteredData: [Item] = []
     let client: DisplayTableViewController?
     public var contentModeAll = true
@@ -22,8 +22,8 @@ class DisplayViewModel {
         do {
             let fetchRequest : NSFetchRequest<Item> = Item.fetchRequest()
             
-//        let namesBeginningWithLetterPredicate = NSPredicate(format: "(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)")
-
+            //        let namesBeginningWithLetterPredicate = NSPredicate(format: "(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)")
+            
             if contentModeAll {
                 //public or owner = current
                 fetchRequest.predicate = NSPredicate(format: "(publicItem == %@) OR (ownerEmail == %@)", NSNumber(booleanLiteral: true), (currentUser?.user?.email)!)
@@ -34,23 +34,14 @@ class DisplayViewModel {
             
             
             filteredData = try context.fetch(fetchRequest) //as! [Item]
-//            if let aContact = fetchedResults.first {
-//                providerName.text = aContact.providerName
-//            }
+            //            if let aContact = fetchedResults.first {
+            //                providerName.text = aContact.providerName
+            //            }
         }
         catch {
             print ("fetch task failed", error)
         }
-//        do {
-//            items = try context.fetch(Item.fetchRequest())
-//            items.predicate = NSPredicate(format: "public == %@", true)
-//            filteredData = items
-//            DispatchQueue.main.async {
-////                self.tableView.reloadData()
-//            }
-//        } catch {
-//            print("Couldn't Fetch Data")
-//        }
+        
         
     }
     
@@ -60,6 +51,13 @@ class DisplayViewModel {
     func newItem() -> Item {
         return Item(context: context)
     }
+    func delete(forRow: Int) {
+        let item = filteredData[forRow]
+        self.context.delete(item)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        self.filteredData.remove(at: forRow)
+    }
+    
     init(client: DisplayTableViewController) {
         self.client = client
     }

@@ -7,9 +7,4 @@
 //
 
 import Foundation
-/*
- • Email
- • Password (at least 6 chars)
- • First name
- • Last name
- */
+

@@ -41,7 +41,6 @@ public class CurrentUser {
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         user = newSubscription
         return true
-        
     }
     
     func subscription(withEmail: String, password: String) -> User? {

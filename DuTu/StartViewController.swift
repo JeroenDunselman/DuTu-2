@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Firebase
+
 let currentUser = CurrentUser()
 class StartViewController: UIViewController {
     
