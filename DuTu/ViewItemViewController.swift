@@ -56,6 +56,7 @@ class ViewItemViewController: UIViewController, UITextViewDelegate {
 //        } change
         
         
+        
         titleView.text = entry.name
         descriptionView.text = entry.desc
         eventTypeLabel.text = "\(entry.category ?? ""), \(entry.ownerEmail ?? ""), \(entry.longitude), \(entry.latitude)"
