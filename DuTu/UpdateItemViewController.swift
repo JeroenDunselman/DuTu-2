@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+
 class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     let categories = ["Sports", "Events", "Movies & Music", "Others"]
@@ -22,56 +23,39 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
     @IBOutlet weak var privacyControl: UISegmentedControl!
     @IBOutlet weak var buttonSave: UIButton!
     @IBOutlet weak var categoryPicker: UIPickerView!
-    
     @IBOutlet weak var datePicker: UIDatePicker!
+    
     @IBAction func saveContact(_ sender: Any) {
         
-//        if (itemEntryTextView?.text.isEmpty)! || itemEntryTextView?.text == "Type anything..."{
-//            print("No Data")
-//
-//            let alert = UIAlertController(title: "Please Type Something", message: "Your entry was left blank.", preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "Okay", style: .default) { action in
-//
-//            })
-//
-//            self.present(alert, animated: true, completion: nil)
-//
-//        } else {
-
-            if let item = item {
-                item.ownerEmail = currentUser?.user?.email
-                item.name = itemEntryTextView?.text!
-                item.publicItem = self.privacyControl.selectedSegmentIndex == 0
-                item.category = categories[selectedCategory]
-                if let coordinate = self.location?.coordinate {
-                    item.latitude = coordinate.latitude
-                    item.longitude = coordinate.longitude
-                }
-                item.date_start = datePicker.date
-//                item.date_end
-
-                do {
-                    try item.validateForInsert()
-                    (UIApplication.shared.delegate as! AppDelegate).saveContext()
-                    dismiss(animated: true, completion: nil)
-                } catch {
-                    let validationError = error as NSError
-                    
-                    print(validationError)
-                    
-                    let alert = UIAlertController(title: validationError.localizedDescription, message: validationError.localizedDescription, preferredStyle: .alert)
-                    
-                    alert.addAction(UIAlertAction(title: "Okay", style: .default) { action in
-//                        alert.dismiss(animated: true, completion: nil)
-                    })
-                    
-                    self.present(alert, animated: true, completion: nil)
-                }
+        if let item = item {
+            item.ownerEmail = currentUser?.user?.email
+            item.name = itemEntryTextView?.text!
+            item.publicItem = self.privacyControl.selectedSegmentIndex == 0
+            item.category = categories[selectedCategory]
+            if let coordinate = self.location?.coordinate {
+                item.latitude = coordinate.latitude
+                item.longitude = coordinate.longitude
             }
+            item.date_start = datePicker.date
+            //                item.date_end
             
-//
+            do {
+                try item.validateForInsert()
+                (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                dismiss(animated: true, completion: nil)
+            } catch {
+                let validationError = error as NSError
+                
+                print(validationError)
+                
+                let alert = UIAlertController(title: validationError.localizedDescription, message: validationError.localizedDescription, preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alert.addAction(defaultAction)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
         
-//        }
     }
     
     override func viewDidLoad() {
@@ -91,10 +75,7 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
             if let category = item.category {
                 self.categoryPicker.selectRow(categories.firstIndex(of: category)! , inComponent:0, animated:true)
             }
-
-            //            (latitude: 51.9230,longitude: 4.4684)
-//            let location = CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude)
-//            self.location = DoTooLocation(coordinate: location)
+            
             if isAdding {
                 item.longitude = 4.4684
                 item.latitude = 51.9230
@@ -106,7 +87,6 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
         
         let title = isAdding ? "Add" : "Update"
         buttonSave.setTitle(title, for: .normal)
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
@@ -130,6 +110,7 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
 }
 
 extension UpdateItemViewController {
+    
     @objc func handleLongPress(_ gestureRecognizer : UIGestureRecognizer){
         if gestureRecognizer.state != .began { return }
         
@@ -141,20 +122,7 @@ extension UpdateItemViewController {
         self.location = DoTooLocation(coordinate: touchMapCoordinate)
         
         mapView.addAnnotation(self.location!)
-        //, context: CFTreeContext)//Album(coordinate: touchMapCoordinate, context: sharedContext)
-        //        print("\(String(describing: self.location?.coordinate))")
-        
-        //        let x = MKPointAnnotation()
-        //        x.coordinate = touchMapCoordinate
-        //        mapView.addAnnotation(x)
-        
     }
-    
-    // 4)
-    //        let annotation = MKPointAnnotation()
-    //        annotation.coordinate = location
-    //        annotation.title = "iOSDevCenter-Kirit Modi"
-    //        annotation.subtitle = "Ahmedabad"
     
     func showLocation(ForItem: Item) {
         
@@ -162,10 +130,9 @@ extension UpdateItemViewController {
             mapView.removeAnnotation(location)
         }
         
-        // default(latitude: 51.9230,longitude: 4.4684)
         let location = CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude)
         self.location = DoTooLocation(coordinate: location)
-        //
+        
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
@@ -175,18 +142,16 @@ extension UpdateItemViewController {
     func initMap() {
         let longPressRecogniser = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))//MapViewController.
         longPressRecogniser.minimumPressDuration = 1.0
+        
         mapView.addGestureRecognizer(longPressRecogniser)
-        
-        // 1)
         mapView.mapType = MKMapType.standard
-        
     }
+    
 }
 
 extension UpdateItemViewController {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //        print("Row: \(row)")
         self.selectedCategory = row
     }
     
@@ -195,13 +160,13 @@ extension UpdateItemViewController {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-
+        
         return self.categories.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return self.categories[row]
-
+        
     }
 }
 /*
@@ -234,4 +199,16 @@ extension UpdateItemViewController {
  //    } else {
  //        return 100
  //    }
-*/
+ 
+ //        if (itemEntryTextView?.text.isEmpty)! || itemEntryTextView?.text == "Type anything..."{
+ //            print("No Data")
+ //
+ //            let alert = UIAlertController(title: "Please Type Something", message: "Your entry was left blank.", preferredStyle: .alert)
+ //            alert.addAction(UIAlertAction(title: "Okay", style: .default) { action in
+ //
+ //            })
+ //
+ //            self.present(alert, animated: true, completion: nil)
+ //
+ //        } else {
+ */

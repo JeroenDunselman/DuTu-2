@@ -7,61 +7,45 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ViewItemViewController: UIViewController, UITextViewDelegate {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var item: Item!
-
-    @IBOutlet weak var descriptionView: UITextView!
-
-    @IBOutlet weak var eventTypeLabel: UILabel!
     
-    @IBAction func updateAction(_ sender: Any) {
-        
-//        guard let newEntry = entryText.text else  {
-//            return
-//        }
-//
-//        item.name = newEntry
-//        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        
-        dismiss(animated: true, completion: nil)
-        
-    }
     @IBOutlet weak var titleView: UILabel!
+    @IBOutlet weak var descriptionView: UITextView!
+    @IBOutlet weak var eventTypeLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    
+    @IBAction func dismissView(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        
-//        entryText!.delegate = self
-//        entryText!.becomeFirstResponder()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         configureEntryData(entry: item)
-        
-        print(item)
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func configureEntryData(entry: Item) {
         
-//        guard let text = entry.name else {
-//            return
-//        } change
-        
-        
-        
         titleView.text = entry.name
-        descriptionView.text = entry.desc
-        eventTypeLabel.text = "\(entry.category ?? ""), \(entry.ownerEmail ?? ""), \(entry.longitude), \(entry.latitude)"
+        var desc = ""
+        if let description = entry.desc {
+            desc = "\(description), "
+        }
+        descriptionView.text = "\(desc)\(entry.ownerEmail!)"
+        let _ = geocode(latitude: entry.latitude, longitude: entry.longitude)
+        eventTypeLabel.text = "\(describe(date: entry.date_start!) ), \(entry.category!)"
     }
-    
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if (text == "\n") {
@@ -70,6 +54,38 @@ class ViewItemViewController: UIViewController, UITextViewDelegate {
         }
         return true
     }
-    
-    
 }
+
+extension ViewItemViewController {
+    
+    func describe(date: Date) -> String
+    {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        
+        return dateFormatter.string(from: date)
+    }
+    
+    func geocode(latitude: CLLocationDegrees, longitude: CLLocationDegrees) -> CLPlacemark? {
+        
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        let geocoder = CLGeocoder()
+        var placemark: CLPlacemark?
+        
+        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            if error != nil {
+                print("something went wrong")
+            }
+            
+            if let placemarks = placemarks {
+                placemark = placemarks.first
+                self.locationLabel.text = placemark?.locality
+            }
+        }
+        
+        return placemark
+    }
+}
+

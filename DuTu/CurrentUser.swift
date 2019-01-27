@@ -27,7 +27,6 @@ public class CurrentUser {
     }
     
     func canSignUp(withEmail: String, password: String, firstName: String, lastName: String) -> Bool {
-//        todoo check password length
         if subscription(withEmail: withEmail, password: password) != nil  {
             return false
         }
@@ -37,7 +36,7 @@ public class CurrentUser {
         newSubscription.password = password
         newSubscription.firstname = firstName
         newSubscription.lastname = lastName
-//        newSubscription.username = ""
+
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         user = newSubscription
         return true
@@ -53,7 +52,6 @@ public class CurrentUser {
             filteredData = try context.fetch(fetchRequest) //as! [Item]
             
             if filteredData.first != nil {
-                
                 return filteredData.first!
             }
         }

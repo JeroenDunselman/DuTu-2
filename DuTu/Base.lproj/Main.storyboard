@@ -607,7 +607,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="updateAction:" destination="PPo-8N-y2F" eventType="touchUpInside" id="3ex-w9-3Zj"/>
+                                    <action selector="dismissView:" destination="PPo-8N-y2F" eventType="touchUpInside" id="oDo-vG-bxA"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qLS-01-4Dw">
@@ -627,26 +627,35 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbj-lp-EF2">
-                                <rect key="frame" x="16" y="321" width="343" height="288"/>
+                                <rect key="frame" x="16" y="354" width="343" height="255"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPh-Fm-P4S">
+                                <rect key="frame" x="16" y="323" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EuE-E5-EUc" firstAttribute="top" secondItem="J2T-aN-4FN" secondAttribute="bottom" constant="8" symbolic="YES" id="16M-d1-v3i"/>
                             <constraint firstItem="Asc-jM-ET2" firstAttribute="leading" secondItem="pbb-w8-lMB" secondAttribute="leading" id="9zy-wO-CfJ"/>
                             <constraint firstItem="qLS-01-4Dw" firstAttribute="leading" secondItem="Wgr-77-OPn" secondAttribute="leading" constant="16" id="BjW-2c-kh1"/>
+                            <constraint firstItem="SPh-Fm-P4S" firstAttribute="leading" secondItem="Wgr-77-OPn" secondAttribute="leading" constant="16" id="DCd-Rk-RFC"/>
                             <constraint firstItem="Wgr-77-OPn" firstAttribute="trailing" secondItem="EuE-E5-EUc" secondAttribute="trailing" constant="16" id="EcH-u9-qNA"/>
                             <constraint firstItem="Asc-jM-ET2" firstAttribute="leading" secondItem="Wgr-77-OPn" secondAttribute="leading" id="Hsz-EP-yyV"/>
                             <constraint firstItem="Asc-jM-ET2" firstAttribute="top" secondItem="lbj-lp-EF2" secondAttribute="bottom" constant="8" id="I4B-lj-dSc"/>
-                            <constraint firstItem="lbj-lp-EF2" firstAttribute="top" secondItem="WOy-E7-wft" secondAttribute="bottom" constant="8" id="M1u-XG-PGg"/>
+                            <constraint firstItem="SPh-Fm-P4S" firstAttribute="top" secondItem="WOy-E7-wft" secondAttribute="bottom" constant="10" id="K38-bp-IaW"/>
                             <constraint firstItem="lbj-lp-EF2" firstAttribute="leading" secondItem="Wgr-77-OPn" secondAttribute="leading" constant="16" id="N9p-aR-Zop"/>
                             <constraint firstItem="Asc-jM-ET2" firstAttribute="bottom" secondItem="Kho-IX-FoQ" secondAttribute="top" id="PEZ-61-Oht"/>
+                            <constraint firstItem="lbj-lp-EF2" firstAttribute="top" secondItem="SPh-Fm-P4S" secondAttribute="bottom" constant="10" id="QRV-1M-gzU"/>
                             <constraint firstItem="Kho-IX-FoQ" firstAttribute="top" secondItem="Asc-jM-ET2" secondAttribute="bottom" id="b3G-MK-Yge"/>
                             <constraint firstItem="Wgr-77-OPn" firstAttribute="trailing" secondItem="WOy-E7-wft" secondAttribute="trailing" constant="16" id="b41-BY-ct0"/>
                             <constraint firstItem="WOy-E7-wft" firstAttribute="top" secondItem="qLS-01-4Dw" secondAttribute="bottom" constant="8" id="cBD-80-0vy"/>
                             <constraint firstItem="EuE-E5-EUc" firstAttribute="leading" secondItem="pbb-w8-lMB" secondAttribute="leadingMargin" id="hOG-xo-LKJ"/>
                             <constraint firstItem="Asc-jM-ET2" firstAttribute="trailing" secondItem="Wgr-77-OPn" secondAttribute="trailing" id="mAP-QN-Yf8"/>
+                            <constraint firstItem="Wgr-77-OPn" firstAttribute="trailing" secondItem="SPh-Fm-P4S" secondAttribute="trailing" constant="16" id="mcx-59-pB2"/>
                             <constraint firstAttribute="trailing" secondItem="Asc-jM-ET2" secondAttribute="trailing" id="qVs-19-UAo"/>
                             <constraint firstItem="EuE-E5-EUc" firstAttribute="leading" secondItem="Wgr-77-OPn" secondAttribute="leading" constant="16" id="vfh-51-VAK"/>
                             <constraint firstItem="Wgr-77-OPn" firstAttribute="trailing" secondItem="lbj-lp-EF2" secondAttribute="trailing" constant="16" id="wn0-8r-CV3"/>
@@ -660,12 +669,13 @@
                     <connections>
                         <outlet property="descriptionView" destination="qLS-01-4Dw" id="e8j-2g-G89"/>
                         <outlet property="eventTypeLabel" destination="WOy-E7-wft" id="3LV-tr-sTa"/>
+                        <outlet property="locationLabel" destination="SPh-Fm-P4S" id="POG-pz-eHp"/>
                         <outlet property="titleView" destination="EuE-E5-EUc" id="ZiM-mZ-P28"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coh-1b-ujM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5177" y="378"/>
+            <point key="canvasLocation" x="5176.8000000000002" y="377.36131934032989"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
