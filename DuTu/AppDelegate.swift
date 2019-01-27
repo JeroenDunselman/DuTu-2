@@ -4,7 +4,6 @@
 //  Copyright © 2019 Jeroen Dunselman. All rights reserved.
 //
 
-
 import UIKit
 import CoreData
 
