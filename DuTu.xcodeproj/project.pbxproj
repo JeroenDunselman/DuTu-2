@@ -98,6 +98,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A968B71521FE5630009967D0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A9290C0D21F380F000CF852F /* LoginViewController.swift */,
+				A9290C0921F34E7800CF852F /* UpdateItemViewController.swift */,
+				A9CBA6E521F32DF0007C6BC3 /* DisplayTableViewController.swift */,
+				A9290C0F21F380F100CF852F /* SignUpViewController.swift */,
+				A9290C0E21F380F100CF852F /* StartViewController.swift */,
+				A9CBA6E721F32E8D007C6BC3 /* ViewItemViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A968B71621FE5644009967D0 /*  ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A9290C1921F3890600CF852F /* LoginViewModel.swift */,
+				A9290C1721F388F800CF852F /* SignUpViewModel.swift */,
+				A9290C1521F388E300CF852F /* StartViewModel.swift */,
+				A9290C0B21F35C9800CF852F /* DisplayViewModel.swift */,
+			);
+			path = " ViewModels";
+			sourceTree = "<group>";
+		};
+		A968B71721FE5676009967D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A9290C1B21F47A1700CF852F /* CurrentUser.swift */,
+				A92FCA8721F6368200F20A71 /* Location.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A9CBA6A421F32479007C6BC3 = {
 			isa = PBXGroup;
 			children = (
@@ -121,18 +154,9 @@
 		A9CBA6AF21F32479007C6BC3 /* DuTu */ = {
 			isa = PBXGroup;
 			children = (
-				A9290C0D21F380F000CF852F /* LoginViewController.swift */,
-				A9290C1B21F47A1700CF852F /* CurrentUser.swift */,
-				A9290C1921F3890600CF852F /* LoginViewModel.swift */,
-				A9290C0F21F380F100CF852F /* SignUpViewController.swift */,
-				A9290C1721F388F800CF852F /* SignUpViewModel.swift */,
-				A9290C0E21F380F100CF852F /* StartViewController.swift */,
-				A9290C1521F388E300CF852F /* StartViewModel.swift */,
-				A9CBA6E521F32DF0007C6BC3 /* DisplayTableViewController.swift */,
-				A9290C0B21F35C9800CF852F /* DisplayViewModel.swift */,
-				A9290C0921F34E7800CF852F /* UpdateItemViewController.swift */,
-				A92FCA8721F6368200F20A71 /* Location.swift */,
-				A9CBA6E721F32E8D007C6BC3 /* ViewItemViewController.swift */,
+				A968B71721FE5676009967D0 /* Model */,
+				A968B71621FE5644009967D0 /*  ViewModels */,
+				A968B71521FE5630009967D0 /* ViewControllers */,
 				A9CBA6B021F32479007C6BC3 /* AppDelegate.swift */,
 				A9CBA6B421F32479007C6BC3 /* Main.storyboard */,
 				A9CBA6B721F32487007C6BC3 /* Assets.xcassets */,
