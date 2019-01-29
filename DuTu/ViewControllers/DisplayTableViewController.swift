@@ -57,8 +57,8 @@ class DisplayTableViewController: UITableViewController, UISearchBarDelegate {
         }
         
         if let viewItemVC = self.viewItemVC {
-            viewItemVC.item = model!.data()[selectedIndex!]
-            viewItemVC.navigationItem.title = viewItemVC.item.name //"Viewing Someone's DoToo"
+            viewItemVC.item = DoTooItem(item: model!.data()[selectedIndex!])
+            viewItemVC.navigationItem.title = viewItemVC.item.data.name //"Viewing Someone's DoToo"
             
             let navigationController = UINavigationController(rootViewController: viewItemVC)
             present(navigationController, animated: false, completion: nil)
@@ -66,12 +66,12 @@ class DisplayTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func updateItemDetails(item: Item?) {
-        var updateItem: Item?
+        var updateItem: DoTooItem?
         
         if item == nil {
             updateItem = model!.newItem()
         } else {
-            updateItem = item
+            updateItem = DoTooItem(item: item!)
         }
         
         if self.updateItemVC == nil {
@@ -98,9 +98,20 @@ class DisplayTableViewController: UITableViewController, UISearchBarDelegate {
 extension DisplayTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         
-        cell.textLabel?.text = model?.data()[indexPath.row].name
+        let cellIdentifier = "Cell"
+        
+//        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
+//        if cell == nil {
+//            cell = UITableViewCell(style: UITableViewCell.CellStyle.value2, reuseIdentifier: cellIdentifier)
+//        }
+//        var cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
+        let cell = UITableViewCell(style: .subtitle , reuseIdentifier: cellIdentifier)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            //as UITableViewCell
+        let item = DoTooItem(item: (model?.data()[indexPath.row])!)
+        cell.textLabel?.text = item.text()
+        cell.detailTextLabel?.text = item.detailText()
         cell.accessoryType = .disclosureIndicator
         return cell
     }

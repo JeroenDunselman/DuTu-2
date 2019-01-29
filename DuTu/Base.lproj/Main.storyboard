@@ -528,8 +528,17 @@
                                 </date>
                             </datePicker>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iJf-Yb-7Nx">
-                                <rect key="frame" x="0.0" y="321" width="375" height="252"/>
+                                <rect key="frame" x="0.0" y="321" width="375" height="233"/>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJw-TB-eWe">
+                                <rect key="frame" x="8" y="552" width="359" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="2Yn-F4-1vl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -537,26 +546,28 @@
                             <constraint firstItem="GFu-jP-eQ8" firstAttribute="top" secondItem="QJN-vH-Dw7" secondAttribute="bottom" id="1ch-3o-mRi"/>
                             <constraint firstItem="QJN-vH-Dw7" firstAttribute="trailing" secondItem="E35-7M-DgW" secondAttribute="trailing" id="2Qy-Dj-nnQ"/>
                             <constraint firstItem="XFp-ZD-jC5" firstAttribute="top" secondItem="IwG-ke-DCn" secondAttribute="bottom" constant="18" id="5Bj-Fq-Ype"/>
-                            <constraint firstItem="E35-7M-DgW" firstAttribute="trailing" secondItem="BdO-Aa-hic" secondAttribute="trailing" constant="32" id="5JF-u5-REx"/>
                             <constraint firstItem="QJN-vH-Dw7" firstAttribute="top" secondItem="LXN-vi-ZnP" secondAttribute="bottom" constant="8" id="66g-h9-ERh"/>
                             <constraint firstItem="IwG-ke-DCn" firstAttribute="top" secondItem="klY-VU-u4W" secondAttribute="bottom" constant="18" id="9DB-sn-AJv"/>
+                            <constraint firstItem="BdO-Aa-hic" firstAttribute="centerX" secondItem="QSL-aV-1Hc" secondAttribute="centerX" id="9os-Z2-l2O"/>
                             <constraint firstItem="iJf-Yb-7Nx" firstAttribute="leading" secondItem="E35-7M-DgW" secondAttribute="leading" id="AG3-s3-bsb"/>
                             <constraint firstItem="1eZ-gq-WLR" firstAttribute="leading" secondItem="E35-7M-DgW" secondAttribute="leading" id="AOn-Dt-Aov"/>
                             <constraint firstItem="E35-7M-DgW" firstAttribute="trailing" secondItem="XFp-ZD-jC5" secondAttribute="trailing" constant="16" id="Ahm-Ek-FyZ"/>
+                            <constraint firstItem="BJw-TB-eWe" firstAttribute="leading" secondItem="E35-7M-DgW" secondAttribute="leading" constant="8" id="Anv-vB-LgM"/>
                             <constraint firstItem="1eZ-gq-WLR" firstAttribute="top" secondItem="BdO-Aa-hic" secondAttribute="bottom" constant="8" id="Evf-kk-z56"/>
+                            <constraint firstItem="BdO-Aa-hic" firstAttribute="top" secondItem="iJf-Yb-7Nx" secondAttribute="bottom" constant="27" id="G1o-On-M5w"/>
+                            <constraint firstItem="BJw-TB-eWe" firstAttribute="centerX" secondItem="QSL-aV-1Hc" secondAttribute="centerX" id="Jhx-Bc-9wv"/>
                             <constraint firstItem="BdO-Aa-hic" firstAttribute="leading" secondItem="E35-7M-DgW" secondAttribute="leading" constant="32" id="K3g-de-36X"/>
                             <constraint firstItem="GFu-jP-eQ8" firstAttribute="trailing" secondItem="E35-7M-DgW" secondAttribute="trailing" id="MNw-LQ-jvD"/>
                             <constraint firstItem="GFu-jP-eQ8" firstAttribute="leading" secondItem="E35-7M-DgW" secondAttribute="leading" id="Obx-7H-GQC"/>
                             <constraint firstItem="iJf-Yb-7Nx" firstAttribute="top" secondItem="GFu-jP-eQ8" secondAttribute="bottom" id="PI5-S8-aTf"/>
+                            <constraint firstItem="BdO-Aa-hic" firstAttribute="top" secondItem="BJw-TB-eWe" secondAttribute="bottom" constant="8" symbolic="YES" id="RI3-IM-C4a"/>
                             <constraint firstItem="1eZ-gq-WLR" firstAttribute="trailing" secondItem="E35-7M-DgW" secondAttribute="trailing" id="S5x-Co-w0K"/>
                             <constraint firstItem="XFp-ZD-jC5" firstAttribute="leading" secondItem="E35-7M-DgW" secondAttribute="leading" constant="16" id="SPJ-j2-aXi"/>
                             <constraint firstItem="LXN-vi-ZnP" firstAttribute="leading" secondItem="E35-7M-DgW" secondAttribute="leading" constant="16" id="U5i-IT-A1h"/>
                             <constraint firstItem="E35-7M-DgW" firstAttribute="trailing" secondItem="LXN-vi-ZnP" secondAttribute="trailing" constant="16" id="U7f-8s-ftb"/>
                             <constraint firstItem="IwG-ke-DCn" firstAttribute="leading" secondItem="E35-7M-DgW" secondAttribute="leading" constant="16" id="XBJ-c7-sQ1"/>
                             <constraint firstItem="LXN-vi-ZnP" firstAttribute="top" secondItem="XFp-ZD-jC5" secondAttribute="bottom" constant="10" id="XWq-QZ-BC3"/>
-                            <constraint firstItem="iJf-Yb-7Nx" firstAttribute="top" secondItem="GFu-jP-eQ8" secondAttribute="bottom" id="Yb3-Eu-u4h"/>
                             <constraint firstItem="QJN-vH-Dw7" firstAttribute="leading" secondItem="E35-7M-DgW" secondAttribute="leading" id="b6G-Qc-pwr"/>
-                            <constraint firstItem="BdO-Aa-hic" firstAttribute="top" secondItem="iJf-Yb-7Nx" secondAttribute="bottom" constant="8" id="feA-jh-bvg"/>
                             <constraint firstItem="jEK-9L-odA" firstAttribute="top" secondItem="1eZ-gq-WLR" secondAttribute="bottom" id="iJB-9r-Pre"/>
                             <constraint firstItem="E35-7M-DgW" firstAttribute="trailing" secondItem="IwG-ke-DCn" secondAttribute="trailing" constant="16" id="mYK-Hp-7Ww"/>
                         </constraints>
@@ -566,14 +577,16 @@
                         <outlet property="buttonSave" destination="1eZ-gq-WLR" id="sgf-91-cML"/>
                         <outlet property="categoryPicker" destination="QJN-vH-Dw7" id="8xz-sP-e0o"/>
                         <outlet property="datePicker" destination="GFu-jP-eQ8" id="elt-T4-GIr"/>
+                        <outlet property="descriptionTextView" destination="LXN-vi-ZnP" id="s4z-kf-rcs"/>
                         <outlet property="itemEntryTextView" destination="IwG-ke-DCn" id="H6A-qq-Fod"/>
+                        <outlet property="localityLabel" destination="BJw-TB-eWe" id="RuP-do-38i"/>
                         <outlet property="mapView" destination="iJf-Yb-7Nx" id="EM7-4A-Hgg"/>
                         <outlet property="privacyControl" destination="BdO-Aa-hic" id="u8x-LP-6h4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3s-LT-cXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4396" y="436"/>
+            <point key="canvasLocation" x="4396" y="435.83208395802103"/>
         </scene>
         <!--View Item View Controller-->
         <scene sceneID="m6r-OB-cBb">

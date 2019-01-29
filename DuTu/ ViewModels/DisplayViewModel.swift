@@ -41,8 +41,8 @@ class DisplayViewModel {
         return filteredData
     }
     
-    func newItem() -> Item {
-        return Item(context: context)
+    func newItem() -> DoTooItem {
+        return DoTooItem(item: Item(context: context))
     }
     
     func delete(forRow: Int) {

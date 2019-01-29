@@ -11,8 +11,7 @@ import CoreLocation
 
 class ViewItemViewController: UIViewController, UITextViewDelegate {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var item: Item!
+    var item: DoTooItem!
     
     @IBOutlet weak var titleView: UILabel!
     @IBOutlet weak var descriptionView: UITextView!
@@ -35,16 +34,16 @@ class ViewItemViewController: UIViewController, UITextViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    func configureEntryData(entry: Item) {
+    func configureEntryData(entry: DoTooItem) {
         
-        titleView.text = entry.name
+        titleView.text = entry.data.name
         var desc = ""
-        if let description = entry.desc {
+        if let description = entry.data.desc {
             desc = "\(description), "
         }
-        descriptionView.text = "\(desc)\(entry.ownerEmail!)"
-        let _ = geocode(latitude: entry.latitude, longitude: entry.longitude)
-        eventTypeLabel.text = "\(describe(date: entry.date_start!) ), \(entry.category!)"
+        descriptionView.text = "\(desc)\(entry.data.ownerEmail!)"
+        self.locationLabel.text = entry.data.locality
+        eventTypeLabel.text = "\(entry.describe(date: entry.data.date_start!) ), \(entry.data.category!)"
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -56,36 +55,17 @@ class ViewItemViewController: UIViewController, UITextViewDelegate {
     }
 }
 
-extension ViewItemViewController {
-    
-    func describe(date: Date) -> String
-    {
-        let dateFormatter = DateFormatter()
-        
-        dateFormatter.dateStyle = DateFormatter.Style.short
-        dateFormatter.timeStyle = DateFormatter.Style.short
-        
-        return dateFormatter.string(from: date)
-    }
-    
-    func geocode(latitude: CLLocationDegrees, longitude: CLLocationDegrees) -> CLPlacemark? {
-        
-        let location = CLLocation(latitude: latitude, longitude: longitude)
-        let geocoder = CLGeocoder()
-        var placemark: CLPlacemark?
-        
-        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            if error != nil {
-                print("something went wrong")
-            }
-            
-            if let placemarks = placemarks {
-                placemark = placemarks.first
-                self.locationLabel.text = placemark?.locality
-            }
-        }
-        
-        return placemark
-    }
-}
+//extension ViewItemViewController {
+//
+//    func describe(date: Date) -> String
+//    {
+//        let dateFormatter = DateFormatter()
+//
+//        dateFormatter.dateStyle = DateFormatter.Style.short
+//        dateFormatter.timeStyle = DateFormatter.Style.short
+//
+//        return dateFormatter.string(from: date)
+//    }
+//    
+//}
 

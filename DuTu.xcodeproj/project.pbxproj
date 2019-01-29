@@ -26,6 +26,7 @@
 		A9CBA6E221F3263D007C6BC3 /* CoreDataExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9CBA6E021F3263D007C6BC3 /* CoreDataExample.xcdatamodeld */; };
 		A9CBA6E621F32DF0007C6BC3 /* DisplayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CBA6E521F32DF0007C6BC3 /* DisplayTableViewController.swift */; };
 		A9CBA6E821F32E8D007C6BC3 /* ViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CBA6E721F32E8D007C6BC3 /* ViewItemViewController.swift */; };
+		A9DCCA6E2200619700C30716 /* DoToo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DCCA6D2200619700C30716 /* DoToo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		A9CBA6E121F3263D007C6BC3 /* CoreDataExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataExample.xcdatamodel; sourceTree = "<group>"; };
 		A9CBA6E521F32DF0007C6BC3 /* DisplayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayTableViewController.swift; sourceTree = "<group>"; };
 		A9CBA6E721F32E8D007C6BC3 /* ViewItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewItemViewController.swift; sourceTree = "<group>"; };
+		A9DCCA6D2200619700C30716 /* DoToo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoToo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +103,9 @@
 		A968B71521FE5630009967D0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A9290C0D21F380F000CF852F /* LoginViewController.swift */,
-				A9290C0921F34E7800CF852F /* UpdateItemViewController.swift */,
+				A9DCCA6C22005B9A00C30716 /* User Admin */,
 				A9CBA6E521F32DF0007C6BC3 /* DisplayTableViewController.swift */,
-				A9290C0F21F380F100CF852F /* SignUpViewController.swift */,
-				A9290C0E21F380F100CF852F /* StartViewController.swift */,
+				A9290C0921F34E7800CF852F /* UpdateItemViewController.swift */,
 				A9CBA6E721F32E8D007C6BC3 /* ViewItemViewController.swift */,
 			);
 			path = ViewControllers;
@@ -127,6 +127,7 @@
 			children = (
 				A9290C1B21F47A1700CF852F /* CurrentUser.swift */,
 				A92FCA8721F6368200F20A71 /* Location.swift */,
+				A9DCCA6D2200619700C30716 /* DoToo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +184,16 @@
 				A9CBA6D221F32487007C6BC3 /* Info.plist */,
 			);
 			path = DuTuUITests;
+			sourceTree = "<group>";
+		};
+		A9DCCA6C22005B9A00C30716 /* User Admin */ = {
+			isa = PBXGroup;
+			children = (
+				A9290C0D21F380F000CF852F /* LoginViewController.swift */,
+				A9290C0F21F380F100CF852F /* SignUpViewController.swift */,
+				A9290C0E21F380F100CF852F /* StartViewController.swift */,
+			);
+			path = "User Admin";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +335,7 @@
 				A9290C1121F380F100CF852F /* StartViewController.swift in Sources */,
 				A92FCA8821F6368200F20A71 /* Location.swift in Sources */,
 				A9290C1A21F3890600CF852F /* LoginViewModel.swift in Sources */,
+				A9DCCA6E2200619700C30716 /* DoToo.swift in Sources */,
 				A9290C1221F380F100CF852F /* SignUpViewController.swift in Sources */,
 				A9CBA6E621F32DF0007C6BC3 /* DisplayTableViewController.swift in Sources */,
 				A9290C0A21F34E7900CF852F /* UpdateItemViewController.swift in Sources */,

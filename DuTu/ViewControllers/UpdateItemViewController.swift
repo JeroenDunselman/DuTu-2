@@ -15,10 +15,11 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
     var selectedCategory = 0
     public var isAdding: Bool = false
     
-    var item: Item!
-    
-    @IBOutlet weak var mapView: MKMapView!
+    var item: DoTooItem!
     var location: DoTooLocation?
+    
+    @IBOutlet weak var descriptionTextView: UITextField!
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet var itemEntryTextView: UITextView?
     @IBOutlet weak var privacyControl: UISegmentedControl!
     @IBOutlet weak var buttonSave: UIButton!
@@ -28,21 +29,23 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
     @IBAction func saveContact(_ sender: Any) {
         
         if let item = item {
-            item.ownerEmail = currentUser?.user?.email
-            item.name = itemEntryTextView?.text!
-            item.publicItem = self.privacyControl.selectedSegmentIndex == 0
-            item.category = categories[selectedCategory]
-            if let coordinate = self.location?.coordinate {
-                item.latitude = coordinate.latitude
-                item.longitude = coordinate.longitude
+            item.data.ownerEmail = currentUser?.user?.email
+            item.data.name = itemEntryTextView?.text!
+            item.data.publicItem = self.privacyControl.selectedSegmentIndex == 0
+            item.data.category = categories[selectedCategory]
+            item.data.desc = descriptionTextView?.text!
+            if let location = location {
+                item.data.latitude = location.coordinate.latitude
+                item.data.longitude = location.coordinate.longitude
+                item.data.locality = location.locality
             }
-            item.date_start = datePicker.date
-            //                item.date_end
             
+            item.data.date_start = datePicker.date
+            //                item.date_end
+           
             do {
-                try item.validateForInsert()
-                (UIApplication.shared.delegate as! AppDelegate).saveContext()
-                dismiss(animated: true, completion: nil)
+                try item.data.validateForInsert()
+
             } catch {
                 let validationError = error as NSError
                 
@@ -53,10 +56,16 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(defaultAction)
                 self.present(alert, animated: true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
+            
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            dismiss(animated: true, completion: nil)
+            
         }
         
     }
+    @IBOutlet weak var localityLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,19 +79,15 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
     override func viewWillAppear(_ animated: Bool)    {
         
         if let item = item {
-            itemEntryTextView?.text = item.name
-            self.privacyControl.selectedSegmentIndex = item.publicItem ? 0 : 1
-            if let category = item.category {
-                self.categoryPicker.selectRow(categories.firstIndex(of: category)! , inComponent:0, animated:true)
+            itemEntryTextView?.text = item.data.name
+            descriptionTextView.text = item.data.desc
+            
+            privacyControl.selectedSegmentIndex = item.data.publicItem ? 0 : 1
+            if let category = item.data.category {
+                categoryPicker.selectRow(categories.firstIndex(of: category)! , inComponent:0, animated:true)
             }
             
-            if isAdding {
-                item.longitude = 4.4684
-                item.latitude = 51.9230
-                
-            }
-            
-            showLocation(ForItem: item)
+            showLocation(ForItem: item.data)
         }
         
         let title = isAdding ? "Add" : "Update"
@@ -107,6 +112,10 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
         return true
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
 }
 
 extension UpdateItemViewController {
@@ -119,20 +128,32 @@ extension UpdateItemViewController {
         if let location = self.location {
             mapView.removeAnnotation(location)
         }
-        self.location = DoTooLocation(coordinate: touchMapCoordinate)
+        self.location = DoTooLocation(coordinate: touchMapCoordinate, label: self.localityLabel)
         
         mapView.addAnnotation(self.location!)
     }
     
     func showLocation(ForItem: Item) {
+        var lat: Double
+        var long: Double
+        
+        if isAdding && ((self.item.data.longitude == 0 && self.item.data.latitude == 0) || self.location == nil)
+        {
+            long = 4.4684
+            lat = 51.9230
+        } else {
+            long = item.data.longitude
+            lat = item.data.latitude
+        }
         
         if let location = self.location {
             mapView.removeAnnotation(location)
         }
         
-        let location = CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude)
-        self.location = DoTooLocation(coordinate: location)
-        
+        let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        self.location = DoTooLocation(coordinate: location, label: nil)
+    
+        self.localityLabel.text = self.item.data.locality
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
@@ -169,46 +190,4 @@ extension UpdateItemViewController {
         
     }
 }
-/*
- 
- //            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
- //            guard let item = item else {
- //            if isAdding {
- 
- //            }
- //            }
- //            } else {
- //                let newEntry = Item(context: context)
- //                newEntry.ownerEmail = currentUser?.user?.email
- //                newEntry.name = itemEntryTextView?.text!
- //                newEntry.publicItem = self.privacyControl.selectedSegmentIndex == 0
- //                newEntry.category = categories[selectedCategory]
- 
- 
- //    @IBAction func cancel(_ sender: Any) {
- //
- //        dismiss(animated: true, completion: nil)
- //    }
- //    if component == 0 {
- //        return "First \(row)"
- //    } else {
- //        return "Second \(row)"
- //    }
- //    if component == 0 {
- //        return 10
- //    } else {
- //        return 100
- //    }
- 
- //        if (itemEntryTextView?.text.isEmpty)! || itemEntryTextView?.text == "Type anything..."{
- //            print("No Data")
- //
- //            let alert = UIAlertController(title: "Please Type Something", message: "Your entry was left blank.", preferredStyle: .alert)
- //            alert.addAction(UIAlertAction(title: "Okay", style: .default) { action in
- //
- //            })
- //
- //            self.present(alert, animated: true, completion: nil)
- //
- //        } else {
- */
+
