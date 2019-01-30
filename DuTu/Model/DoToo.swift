@@ -48,7 +48,7 @@ class DoTooItem: NSObject {
     }
 
     func detailText() -> String {
-        let result = "\(locality()), \(date())"
+        let result = "\(locality()), \(date()), \(data.ownerEmail ?? "unowned")"
         return result
     }
 

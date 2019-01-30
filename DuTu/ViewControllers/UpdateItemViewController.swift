@@ -12,6 +12,8 @@ import MapKit
 class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     let categories = ["Sports", "Events", "Movies & Music", "Others"]
+    //R'knor
+    let defaultLocation = CLLocationCoordinate2D(latitude: 51.9230, longitude: 4.4684)
     var selectedCategory = 0
     public var isAdding: Bool = false
     
@@ -25,6 +27,7 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
     @IBOutlet weak var buttonSave: UIButton!
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var localityLabel: UILabel!
     
     @IBAction func saveContact(_ sender: Any) {
         
@@ -65,8 +68,7 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
         }
         
     }
-    @IBOutlet weak var localityLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -120,6 +122,7 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
 
 extension UpdateItemViewController {
     
+    //handle map action
     @objc func handleLongPress(_ gestureRecognizer : UIGestureRecognizer){
         if gestureRecognizer.state != .began { return }
         
@@ -137,10 +140,10 @@ extension UpdateItemViewController {
         var lat: Double
         var long: Double
         
-        if isAdding && ((self.item.data.longitude == 0 && self.item.data.latitude == 0) || self.location == nil)
+        if isAdding && ((self.item.data.longitude == 0 && self.item.data.latitude == 0) || self.location == nil) //
         {
-            long = 4.4684
-            lat = 51.9230
+            long = defaultLocation.longitude
+            lat = defaultLocation.latitude
         } else {
             long = item.data.longitude
             lat = item.data.latitude
@@ -151,9 +154,10 @@ extension UpdateItemViewController {
         }
         
         let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        
         self.location = DoTooLocation(coordinate: location, label: nil)
-    
         self.localityLabel.text = self.item.data.locality
+        
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)

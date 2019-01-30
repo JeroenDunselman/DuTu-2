@@ -67,11 +67,14 @@ class DisplayTableViewController: UITableViewController, UISearchBarDelegate {
     
     func updateItemDetails(item: Item?) {
         var updateItem: DoTooItem?
+        var title = ""
         
         if item == nil {
             updateItem = model!.newItem()
+            title = "New DoToo"
         } else {
             updateItem = DoTooItem(item: item!)
+            title = item!.name!
         }
         
         if self.updateItemVC == nil {
@@ -80,6 +83,7 @@ class DisplayTableViewController: UITableViewController, UISearchBarDelegate {
         
         if let updateItemVC = self.updateItemVC {
             updateItemVC.isAdding = item == nil
+            updateItemVC.title = title
             updateItemVC.navigationItem.title = title //
             updateItemVC.navigationItem.leftBarButtonItem =
                 UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBack))
