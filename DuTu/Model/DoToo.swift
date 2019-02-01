@@ -8,14 +8,17 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class DoTooItem: NSObject {
     var data: Item!
-//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let categories = ["Sports", "Events", "Movies & Music", "Others"]
     
     init(item: Item) {
         self.data = item
+        if self.data.date_start == nil {
+            self.data.date_start = Date()
+        }
     }
     
     func locality() -> String {

@@ -13,7 +13,7 @@ class ViewItemViewController: UIViewController, UITextViewDelegate {
     
     var item: DoTooItem!
     
-    @IBOutlet weak var titleView: UILabel!
+//    @IBOutlet weak var titleView: UILabel!
     @IBOutlet weak var descriptionView: UITextView!
     @IBOutlet weak var eventTypeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -36,7 +36,7 @@ class ViewItemViewController: UIViewController, UITextViewDelegate {
     
     func configureEntryData(entry: DoTooItem) {
         
-        titleView.text = entry.data.name
+//        titleView.text = entry.data.name
         var desc = ""
         if let description = entry.data.desc {
             desc = "\(description), "

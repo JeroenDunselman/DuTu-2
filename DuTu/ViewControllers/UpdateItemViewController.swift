@@ -19,24 +19,24 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
     
     var item: DoTooItem!
     var location: DoTooLocation?
-    
-    @IBOutlet weak var descriptionTextView: UITextField!
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet var itemEntryTextView: UITextView?
+
+    @IBOutlet var itemNameTextView: UITextField?
+    @IBOutlet weak var itemDescriptionTextView: UITextView!
     @IBOutlet weak var privacyControl: UISegmentedControl!
     @IBOutlet weak var buttonSave: UIButton!
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var localityLabel: UILabel!
-    
+    @IBOutlet weak var mapView: MKMapView!
     @IBAction func saveContact(_ sender: Any) {
         
         if let item = item {
             item.data.ownerEmail = currentUser?.user?.email
-            item.data.name = itemEntryTextView?.text!
+            item.data.name = itemNameTextView?.text!
+            item.data.desc = itemDescriptionTextView?.text!
             item.data.publicItem = self.privacyControl.selectedSegmentIndex == 0
             item.data.category = categories[selectedCategory]
-            item.data.desc = descriptionTextView?.text!
+            
             if let location = location {
                 item.data.latitude = location.coordinate.latitude
                 item.data.longitude = location.coordinate.longitude
@@ -45,13 +45,13 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
             
             item.data.date_start = datePicker.date
             //                item.date_end
-           
+            
             do {
-                try item.data.validateForInsert()
-
+                try item.data.validateForUpdate()
+                
             } catch {
                 let validationError = error as NSError
-                
+                //                if let validationError = error as? NSError {
                 print(validationError)
                 
                 let alert = UIAlertController(title: validationError.localizedDescription, message: validationError.localizedDescription, preferredStyle: .alert)
@@ -59,7 +59,9 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(defaultAction)
                 self.present(alert, animated: true, completion: nil)
-                self.dismiss(animated: true, completion: nil)
+                //                    self.dismiss(animated: true, completion: nil)
+                return
+                //                }
             }
             
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
@@ -68,11 +70,11 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
         }
         
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        itemEntryTextView?.delegate = self
+
+        itemDescriptionTextView?.delegate = self
         self.categoryPicker.dataSource = self
         self.categoryPicker.delegate = self
         initMap()
@@ -81,29 +83,25 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
     override func viewWillAppear(_ animated: Bool)    {
         
         if let item = item {
-            itemEntryTextView?.text = item.data.name
-            descriptionTextView.text = item.data.desc
-            
+            itemNameTextView?.text = item.data.name
+            itemDescriptionTextView.text = item.data.desc
             privacyControl.selectedSegmentIndex = item.data.publicItem ? 0 : 1
+            showLocation(ForItem: item.data)
+            
             if let category = item.data.category {
                 categoryPicker.selectRow(categories.firstIndex(of: category)! , inComponent:0, animated:true)
             }
             
-            showLocation(ForItem: item.data)
+            datePicker.setDate(item.data.date_start ?? Date() , animated: false)
         }
         
-        let title = isAdding ? "Add" : "Update"
-        buttonSave.setTitle(title, for: .normal)
+        let buttonText = isAdding ? "Add" : "Update"
+        buttonSave.setTitle(buttonText, for: .normal)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
-        textView.textColor = UIColor.black
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

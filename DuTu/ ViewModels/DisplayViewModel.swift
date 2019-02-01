@@ -20,7 +20,7 @@ class DisplayViewModel {
         
         do {
             let fetchRequest : NSFetchRequest<Item> = Item.fetchRequest()
-            
+            //todoo: sort by date
             if contentModeAll {
                 //public or owner = current
                 fetchRequest.predicate = NSPredicate(format: "(publicItem == %@) OR (ownerEmail == %@)", NSNumber(booleanLiteral: true), (currentUser?.user?.email)!)

@@ -104,15 +104,8 @@ extension DisplayTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "Cell"
-        
-//        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
-//        if cell == nil {
-//            cell = UITableViewCell(style: UITableViewCell.CellStyle.value2, reuseIdentifier: cellIdentifier)
-//        }
-//        var cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
         let cell = UITableViewCell(style: .subtitle , reuseIdentifier: cellIdentifier)
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            //as UITableViewCell
+
         let item = DoTooItem(item: (model?.data()[indexPath.row])!)
         cell.textLabel?.text = item.text()
         cell.detailTextLabel?.text = item.detailText()
