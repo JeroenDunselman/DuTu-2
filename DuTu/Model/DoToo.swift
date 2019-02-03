@@ -11,9 +11,11 @@ import UIKit
 import CoreData
 
 class DoTooItem: NSObject {
+    
     var data: Item!
     let categories = ["Sports", "Events", "Movies & Music", "Others"]
-    
+    var weather = WeatherService()
+
     init(item: Item) {
         self.data = item
         if self.data.date_start == nil {
@@ -28,24 +30,28 @@ class DoTooItem: NSObject {
         return "No locality found"
     }
     
+    func period() -> String {
+        var desc = "From \(describe(date: self.data.date_start!))"
+        desc = desc + (endDate() == nil ? "" : " to \(endDate()!)")
+        return desc
+    }
+    
     func date() -> String {
         return describe(date: self.data.date_start!)
     }
     
+    func endDate() -> String? {
+        if let date = data.date_end {
+            return describe(date: date)
+        }
+        return nil
+    }
+    
     func text() -> String {
+        
         var text = ""
-        
-        if let name = data.name {
-            text = name
-        } else {
-            text = "name n.a."
-        }
-        
-        if let desc = data.desc {
-            text = "\(text), \(desc)"
-        } else {
-            text = "\(text), desc n.a."
-        }
+        text = data.name == nil ? "name n.a." : data.name!
+        text = text + (data.desc == nil ? ", desc n.a." : ", \(data.desc!)")
         
         return text
     }
@@ -55,6 +61,80 @@ class DoTooItem: NSObject {
         return result
     }
 
+    func getWeather(view: WeatherView) {
+        
+        let forecastDate = max(data.date_start!, Date())
+        let index = dateIndex(for: forecastDate)
+        if index > 16 { return }
+        
+        weather.view = view
+        if let locality = data.locality {
+            weather.location = locality
+            weather.getCurrentWeatherData()
+            weather.getForecastWeatherData()
+        }
+
+    }
+    
+    func getWeather() {
+        let forecastDate = max(data.date_start!, Date())
+        let index = dateIndex(for: forecastDate)
+        if index > 16 { return }
+        
+        weather.view = self
+        if let locality = data.locality {
+            weather.location = locality
+            weather.getCurrentWeatherData()
+            weather.getForecastWeatherData()
+        }
+    }
+    
+    func weatherUpdate() {
+    
+        data.weather_update = Date()
+        
+        let forecastDate = max(data.date_start!, Date())
+        let index = dateIndex(for: forecastDate)
+        
+        //forecast n.a.
+        if index > weather.forecast.count {
+            return
+        }
+        
+        var temperature = ""
+        var type = 0
+        if index == 0 {
+            temperature = weather.tempCurrent
+            type = weather.weatherTypeCurrentId
+        } else {
+            temperature = weather.forecast[index - 1].max
+            type = weather.forecast[index - 1].typeId
+        }
+        data.forecast_temperature = temperature
+        data.forecast_weather_type = Double(type)
+        
+        do { try data.validateForInsert() } catch {
+            return
+        }
+        
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
+    var temperature: String {
+        if let temp = self.data.forecast_temperature {
+            return "\(temp) °"
+        }
+        return ""
+    }
+    
+    func dateIndex(for forecastDate: Date) -> Int {
+        let calendar = Calendar.current
+        // Replace the hour (time) of both dates with 00:00
+        let date1 = calendar.startOfDay(for: Date())
+        let date2 = calendar.startOfDay(for: forecastDate)
+        let dateIndex = calendar.dateComponents([.day], from: date1, to: date2).day!
+        return dateIndex
+    }
 }
 
 extension DoTooItem {
@@ -68,6 +148,12 @@ extension DoTooItem {
         
         return dateFormatter.string(from: date)
     }
-    
+}
 
+extension DoTooItem:  WeatherView {
+    
+    func weatherDataAvailable() {
+        
+        self.weatherUpdate()
+    }
 }

@@ -26,9 +26,23 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
     @IBOutlet weak var buttonSave: UIButton!
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var datePickerEnd: UIDatePicker!
     @IBOutlet weak var localityLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
-    @IBAction func saveContact(_ sender: Any) {
+    @IBAction func dateStartMoved(_ sender: Any) {
+        if datePicker.date < Date() {
+            datePicker.setDate(Date(), animated: true)
+        }
+        dateEndMoved(0)
+    }
+    
+    @IBAction func dateEndMoved(_ sender: Any) {
+        if datePickerEnd.date < datePicker.date {
+            datePickerEnd.setDate(datePicker.date, animated: true)
+        }
+    }
+    
+    @IBAction func saveItem(_ sender: Any) {
         
         if let item = item {
             item.data.ownerEmail = currentUser?.user?.email
@@ -44,7 +58,7 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
             }
             
             item.data.date_start = datePicker.date
-            //                item.date_end
+            item.data.date_end = datePickerEnd.date
             
             do {
                 try item.data.validateForUpdate()
@@ -65,6 +79,8 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
             }
             
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+//            item.getWeather() **issue
             dismiss(animated: true, completion: nil)
             
         }
@@ -77,6 +93,8 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
         itemDescriptionTextView?.delegate = self
         self.categoryPicker.dataSource = self
         self.categoryPicker.delegate = self
+        self.datePicker.datePickerMode = UIDatePicker.Mode.date
+        self.datePickerEnd.datePickerMode = UIDatePicker.Mode.date
         initMap()
     }
     
@@ -104,13 +122,13 @@ class UpdateItemViewController: UIViewController, UITextViewDelegate, UIPickerVi
         // Dispose of any resources that can be recreated.
     }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if (text == "\n") {
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
-    }
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        if (text == "\n") {
+//            textView.resignFirstResponder()
+//            return false
+//        }
+//        return true
+//    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

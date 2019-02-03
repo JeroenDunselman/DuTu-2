@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		234418057A17068BA54F5BCD /* Pods_DuTu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF2FA6738F6EBB823586B0E /* Pods_DuTu.framework */; };
+		5CAE612A04157CCE1D8E38C0 /* Pods_DuTuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72901E004214B5F678DA9223 /* Pods_DuTuTests.framework */; };
 		A9290C0A21F34E7900CF852F /* UpdateItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9290C0921F34E7800CF852F /* UpdateItemViewController.swift */; };
 		A9290C0C21F35C9800CF852F /* DisplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9290C0B21F35C9800CF852F /* DisplayViewModel.swift */; };
 		A9290C1021F380F100CF852F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9290C0D21F380F000CF852F /* LoginViewController.swift */; };
@@ -17,6 +19,21 @@
 		A9290C1A21F3890600CF852F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9290C1921F3890600CF852F /* LoginViewModel.swift */; };
 		A9290C1C21F47A1700CF852F /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9290C1B21F47A1700CF852F /* CurrentUser.swift */; };
 		A92FCA8821F6368200F20A71 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92FCA8721F6368200F20A71 /* Location.swift */; };
+		A982156A22063D1800E00AC6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A982156922063D1800E00AC6 /* Settings.swift */; };
+		A982157C2206474600E00AC6 /* 01d.png in Resources */ = {isa = PBXBuildFile; fileRef = A982156C2206474500E00AC6 /* 01d.png */; };
+		A982157D2206474600E00AC6 /* 02d.png in Resources */ = {isa = PBXBuildFile; fileRef = A982156D2206474500E00AC6 /* 02d.png */; };
+		A982157E2206474600E00AC6 /* 03d.png in Resources */ = {isa = PBXBuildFile; fileRef = A982156E2206474500E00AC6 /* 03d.png */; };
+		A982157F2206474600E00AC6 /* 04d.png in Resources */ = {isa = PBXBuildFile; fileRef = A982156F2206474500E00AC6 /* 04d.png */; };
+		A98215802206474600E00AC6 /* 09d.png in Resources */ = {isa = PBXBuildFile; fileRef = A98215702206474500E00AC6 /* 09d.png */; };
+		A98215812206474600E00AC6 /* 10d.png in Resources */ = {isa = PBXBuildFile; fileRef = A98215712206474500E00AC6 /* 10d.png */; };
+		A98215822206474600E00AC6 /* 11d.png in Resources */ = {isa = PBXBuildFile; fileRef = A98215722206474500E00AC6 /* 11d.png */; };
+		A98215832206474600E00AC6 /* 13d.png in Resources */ = {isa = PBXBuildFile; fileRef = A98215732206474500E00AC6 /* 13d.png */; };
+		A98215842206474600E00AC6 /* 50d.png in Resources */ = {isa = PBXBuildFile; fileRef = A98215742206474500E00AC6 /* 50d.png */; };
+		A98215852206474600E00AC6 /* clouds.png in Resources */ = {isa = PBXBuildFile; fileRef = A98215752206474500E00AC6 /* clouds.png */; };
+		A98215892206474600E00AC6 /* rain.png in Resources */ = {isa = PBXBuildFile; fileRef = A98215792206474500E00AC6 /* rain.png */; };
+		A982158A2206474600E00AC6 /* storm.png in Resources */ = {isa = PBXBuildFile; fileRef = A982157A2206474500E00AC6 /* storm.png */; };
+		A982158B2206474600E00AC6 /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = A982157B2206474500E00AC6 /* sun.png */; };
+		A9865D382204E38200579564 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9865D372204E38200579564 /* WeatherService.swift */; };
 		A9CBA6B121F32479007C6BC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CBA6B021F32479007C6BC3 /* AppDelegate.swift */; };
 		A9CBA6B621F32479007C6BC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9CBA6B421F32479007C6BC3 /* Main.storyboard */; };
 		A9CBA6B821F32487007C6BC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9CBA6B721F32487007C6BC3 /* Assets.xcassets */; };
@@ -27,6 +44,7 @@
 		A9CBA6E621F32DF0007C6BC3 /* DisplayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CBA6E521F32DF0007C6BC3 /* DisplayTableViewController.swift */; };
 		A9CBA6E821F32E8D007C6BC3 /* ViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CBA6E721F32E8D007C6BC3 /* ViewItemViewController.swift */; };
 		A9DCCA6E2200619700C30716 /* DoToo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DCCA6D2200619700C30716 /* DoToo.swift */; };
+		DF4849CBD96C6BAE51B20A65 /* Pods_DuTuUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1D69D853092FC7C9AFD524 /* Pods_DuTuUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +65,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18CA7AE11B4B5D838972A967 /* Pods-DuTuUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuTuUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DuTuUITests/Pods-DuTuUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2A42B347A33958A3FDBE9ED4 /* Pods-DuTuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuTuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DuTuTests/Pods-DuTuTests.release.xcconfig"; sourceTree = "<group>"; };
+		2DF2FA6738F6EBB823586B0E /* Pods_DuTu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuTu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		33A144BF1FF0F5CE46784F38 /* Pods-DuTu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuTu.release.xcconfig"; path = "Pods/Target Support Files/Pods-DuTu/Pods-DuTu.release.xcconfig"; sourceTree = "<group>"; };
+		72901E004214B5F678DA9223 /* Pods_DuTuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuTuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		956B8FF2D34A2AFA37BC2B9F /* Pods-DuTu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuTu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DuTu/Pods-DuTu.debug.xcconfig"; sourceTree = "<group>"; };
+		9F1D69D853092FC7C9AFD524 /* Pods_DuTuUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuTuUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9290C0921F34E7800CF852F /* UpdateItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateItemViewController.swift; sourceTree = "<group>"; };
 		A9290C0B21F35C9800CF852F /* DisplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayViewModel.swift; sourceTree = "<group>"; };
 		A9290C0D21F380F000CF852F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +82,21 @@
 		A9290C1921F3890600CF852F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A9290C1B21F47A1700CF852F /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		A92FCA8721F6368200F20A71 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		A982156922063D1800E00AC6 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		A982156C2206474500E00AC6 /* 01d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01d.png; sourceTree = "<group>"; };
+		A982156D2206474500E00AC6 /* 02d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02d.png; sourceTree = "<group>"; };
+		A982156E2206474500E00AC6 /* 03d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03d.png; sourceTree = "<group>"; };
+		A982156F2206474500E00AC6 /* 04d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 04d.png; sourceTree = "<group>"; };
+		A98215702206474500E00AC6 /* 09d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 09d.png; sourceTree = "<group>"; };
+		A98215712206474500E00AC6 /* 10d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10d.png; sourceTree = "<group>"; };
+		A98215722206474500E00AC6 /* 11d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11d.png; sourceTree = "<group>"; };
+		A98215732206474500E00AC6 /* 13d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13d.png; sourceTree = "<group>"; };
+		A98215742206474500E00AC6 /* 50d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 50d.png; sourceTree = "<group>"; };
+		A98215752206474500E00AC6 /* clouds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clouds.png; sourceTree = "<group>"; };
+		A98215792206474500E00AC6 /* rain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rain.png; sourceTree = "<group>"; };
+		A982157A2206474500E00AC6 /* storm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storm.png; sourceTree = "<group>"; };
+		A982157B2206474500E00AC6 /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sun.png; sourceTree = "<group>"; };
+		A9865D372204E38200579564 /* WeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		A9CBA6AD21F32479007C6BC3 /* DuTu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuTu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9CBA6B021F32479007C6BC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9CBA6B521F32479007C6BC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,6 +113,8 @@
 		A9CBA6E521F32DF0007C6BC3 /* DisplayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayTableViewController.swift; sourceTree = "<group>"; };
 		A9CBA6E721F32E8D007C6BC3 /* ViewItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewItemViewController.swift; sourceTree = "<group>"; };
 		A9DCCA6D2200619700C30716 /* DoToo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoToo.swift; sourceTree = "<group>"; };
+		D64C9279AB45F276F64E4098 /* Pods-DuTuTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuTuTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DuTuTests/Pods-DuTuTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F0D37B7D53DD3B5E8AC60033 /* Pods-DuTuUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuTuUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DuTuUITests/Pods-DuTuUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				234418057A17068BA54F5BCD /* Pods_DuTu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CAE612A04157CCE1D8E38C0 /* Pods_DuTuTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,12 +138,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF4849CBD96C6BAE51B20A65 /* Pods_DuTuUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C6D32F1FE0D46B3A4D656B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				956B8FF2D34A2AFA37BC2B9F /* Pods-DuTu.debug.xcconfig */,
+				33A144BF1FF0F5CE46784F38 /* Pods-DuTu.release.xcconfig */,
+				D64C9279AB45F276F64E4098 /* Pods-DuTuTests.debug.xcconfig */,
+				2A42B347A33958A3FDBE9ED4 /* Pods-DuTuTests.release.xcconfig */,
+				F0D37B7D53DD3B5E8AC60033 /* Pods-DuTuUITests.debug.xcconfig */,
+				18CA7AE11B4B5D838972A967 /* Pods-DuTuUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A968B71521FE5630009967D0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,11 +183,34 @@
 		A968B71721FE5676009967D0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A982156922063D1800E00AC6 /* Settings.swift */,
+				A9865D372204E38200579564 /* WeatherService.swift */,
 				A9290C1B21F47A1700CF852F /* CurrentUser.swift */,
 				A92FCA8721F6368200F20A71 /* Location.swift */,
 				A9DCCA6D2200619700C30716 /* DoToo.swift */,
+				A982156B2206474500E00AC6 /* weather icons */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A982156B2206474500E00AC6 /* weather icons */ = {
+			isa = PBXGroup;
+			children = (
+				A982156C2206474500E00AC6 /* 01d.png */,
+				A982156D2206474500E00AC6 /* 02d.png */,
+				A982156E2206474500E00AC6 /* 03d.png */,
+				A982156F2206474500E00AC6 /* 04d.png */,
+				A98215702206474500E00AC6 /* 09d.png */,
+				A98215712206474500E00AC6 /* 10d.png */,
+				A98215722206474500E00AC6 /* 11d.png */,
+				A98215732206474500E00AC6 /* 13d.png */,
+				A98215742206474500E00AC6 /* 50d.png */,
+				A98215752206474500E00AC6 /* clouds.png */,
+				A98215792206474500E00AC6 /* rain.png */,
+				A982157A2206474500E00AC6 /* storm.png */,
+				A982157B2206474500E00AC6 /* sun.png */,
+			);
+			path = "weather icons";
 			sourceTree = "<group>";
 		};
 		A9CBA6A421F32479007C6BC3 = {
@@ -139,6 +220,8 @@
 				A9CBA6C421F32487007C6BC3 /* DuTuTests */,
 				A9CBA6CF21F32487007C6BC3 /* DuTuUITests */,
 				A9CBA6AE21F32479007C6BC3 /* Products */,
+				7C6D32F1FE0D46B3A4D656B8 /* Pods */,
+				B998FACC68950F4C1730C156 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -196,6 +279,16 @@
 			path = "User Admin";
 			sourceTree = "<group>";
 		};
+		B998FACC68950F4C1730C156 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DF2FA6738F6EBB823586B0E /* Pods_DuTu.framework */,
+				72901E004214B5F678DA9223 /* Pods_DuTuTests.framework */,
+				9F1D69D853092FC7C9AFD524 /* Pods_DuTuUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -203,9 +296,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9CBA6D521F32487007C6BC3 /* Build configuration list for PBXNativeTarget "DuTu" */;
 			buildPhases = (
+				73EF98E051FAF3A806BC2595 /* [CP] Check Pods Manifest.lock */,
 				A9CBA6A921F32479007C6BC3 /* Sources */,
 				A9CBA6AA21F32479007C6BC3 /* Frameworks */,
 				A9CBA6AB21F32479007C6BC3 /* Resources */,
+				1136B3D9DFD0DBA00F363E05 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -220,6 +315,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9CBA6D821F32487007C6BC3 /* Build configuration list for PBXNativeTarget "DuTuTests" */;
 			buildPhases = (
+				B02566CDFFD631B8060F3517 /* [CP] Check Pods Manifest.lock */,
 				A9CBA6BD21F32487007C6BC3 /* Sources */,
 				A9CBA6BE21F32487007C6BC3 /* Frameworks */,
 				A9CBA6BF21F32487007C6BC3 /* Resources */,
@@ -238,6 +334,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9CBA6DB21F32487007C6BC3 /* Build configuration list for PBXNativeTarget "DuTuUITests" */;
 			buildPhases = (
+				99196FF4BB861809CCB979C0 /* [CP] Check Pods Manifest.lock */,
 				A9CBA6C821F32487007C6BC3 /* Sources */,
 				A9CBA6C921F32487007C6BC3 /* Frameworks */,
 				A9CBA6CA21F32487007C6BC3 /* Resources */,
@@ -301,8 +398,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9CBA6BB21F32487007C6BC3 /* LaunchScreen.storyboard in Resources */,
+				A982158A2206474600E00AC6 /* storm.png in Resources */,
 				A9CBA6B821F32487007C6BC3 /* Assets.xcassets in Resources */,
+				A98215822206474600E00AC6 /* 11d.png in Resources */,
+				A98215842206474600E00AC6 /* 50d.png in Resources */,
+				A98215832206474600E00AC6 /* 13d.png in Resources */,
+				A982157F2206474600E00AC6 /* 04d.png in Resources */,
+				A98215812206474600E00AC6 /* 10d.png in Resources */,
+				A98215852206474600E00AC6 /* clouds.png in Resources */,
+				A982158B2206474600E00AC6 /* sun.png in Resources */,
+				A98215892206474600E00AC6 /* rain.png in Resources */,
 				A9CBA6B621F32479007C6BC3 /* Main.storyboard in Resources */,
+				A982157E2206474600E00AC6 /* 03d.png in Resources */,
+				A982157C2206474600E00AC6 /* 01d.png in Resources */,
+				A982157D2206474600E00AC6 /* 02d.png in Resources */,
+				A98215802206474600E00AC6 /* 09d.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,13 +432,90 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1136B3D9DFD0DBA00F363E05 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DuTu/Pods-DuTu-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DuTu/Pods-DuTu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73EF98E051FAF3A806BC2595 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DuTu-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99196FF4BB861809CCB979C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DuTuUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B02566CDFFD631B8060F3517 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DuTuTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A9CBA6A921F32479007C6BC3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9865D382204E38200579564 /* WeatherService.swift in Sources */,
 				A9290C1621F388E300CF852F /* StartViewModel.swift in Sources */,
 				A9290C0C21F35C9800CF852F /* DisplayViewModel.swift in Sources */,
+				A982156A22063D1800E00AC6 /* Settings.swift in Sources */,
 				A9CBA6B121F32479007C6BC3 /* AppDelegate.swift in Sources */,
 				A9CBA6E221F3263D007C6BC3 /* CoreDataExample.xcdatamodeld in Sources */,
 				A9290C1821F388F800CF852F /* SignUpViewModel.swift in Sources */,
@@ -514,6 +701,7 @@
 		};
 		A9CBA6D621F32487007C6BC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 956B8FF2D34A2AFA37BC2B9F /* Pods-DuTu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -533,6 +721,7 @@
 		};
 		A9CBA6D721F32487007C6BC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33A144BF1FF0F5CE46784F38 /* Pods-DuTu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -552,6 +741,7 @@
 		};
 		A9CBA6D921F32487007C6BC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D64C9279AB45F276F64E4098 /* Pods-DuTuTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -573,6 +763,7 @@
 		};
 		A9CBA6DA21F32487007C6BC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A42B347A33958A3FDBE9ED4 /* Pods-DuTuTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -594,6 +785,7 @@
 		};
 		A9CBA6DC21F32487007C6BC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0D37B7D53DD3B5E8AC60033 /* Pods-DuTuUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -614,6 +806,7 @@
 		};
 		A9CBA6DD21F32487007C6BC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18CA7AE11B4B5D838972A967 /* Pods-DuTuUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
